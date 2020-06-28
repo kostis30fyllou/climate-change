@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NotFoundComponent } from './not-found.component';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-app' }),
+    BrowserAnimationsModule,
     AppRoutingModule,
   ],
   providers: [],

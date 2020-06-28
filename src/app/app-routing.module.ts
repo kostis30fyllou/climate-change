@@ -8,6 +8,7 @@ import { APP_ROUTES } from './app-routes';
   imports: [
     RouterModule.forRoot(APP_ROUTES, {
       initialNavigation: 'enabled',
+      scrollPositionRestoration: 'top'
     }),
   ],
   exports: [

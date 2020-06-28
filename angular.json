@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
-  "defaultProject": "app",  
+  "defaultProject": "app",
   "projects": {
     "app": {
       "root": "",
@@ -48,7 +48,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -185,5 +189,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fb2d36ec-d5d2-4f1d-a4aa-2efe9859d4e3"
   }
 }

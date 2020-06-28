@@ -28,8 +28,10 @@
     "@nguniversal/express-engine": "~9.1.1",
     "@nguniversal/module-map-ngfactory-loader": "~9.0.0-next.9",
     "express": "~4.17.1",
+    "jquery": "^3.5.1",
     "rxjs": "~6.5.4",
     "tslib": "~1.10.0",
+    "uikit": "^3.5.4",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -1,0 +1,25 @@
+// Your custom variables and variable overwrites.
+// Fonts
+$global-font-family: 'Open Sans', sans-serif;
+$global-font-size: 16px;
+$base-heading-font-family: 'Roboto', sans-serif;
+$base-heading-font-weight: 500;
+
+// Colors
+$pallet-one: #00783e;
+$pallet-two: #47b881;
+$pallet-three: #d4eee2;
+$pallet-four: #f1faf5;
+
+$global-emphasis-color: $pallet-one;
+$global-link-color: $pallet-two;
+$global-color: $pallet-four;
+$global-muted-color: $pallet-three;
+$global-muted-background: $pallet-four;
+$base-heading-color: $pallet-four;
+
+// Nav-bar
+$navbar-nav-item-color: $global-link-color;
+$navbar-nav-item-hover-color: $global-emphasis-color;
+$navbar-nav-item-font-size: $global-font-size;
+$navbar-nav-item-font-family: $base-heading-font-family;
