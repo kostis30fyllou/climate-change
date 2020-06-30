@@ -7,7 +7,7 @@ import {environment} from '../environments/environment';
   selector: 'app-root',
   template: `
     <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-      <nav class="uk-navbar-container uk-position-relative uk-text-bold" uk-navbar style="z-index: 980;">
+      <nav class="uk-navbar-container uk-position-relative uk-text-bold" uk-navbar style="z-index: 980; width: 100vw;">
         <div class="uk-navbar-left uk-margin-left">
           <a class="uk-navbar-item uk-logo" routerLink="/">
             <img width="50" src="/assets/logo.png">
@@ -16,7 +16,7 @@ import {environment} from '../environments/environment';
         <div class="uk-navbar-right uk-margin-large-right">
           <ul class="uk-navbar-nav">
             <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-            <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/test">test</a></li>
+            <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/about">About Us</a></li>
             <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/test2">test2</a></li>
           </ul>
         </div>

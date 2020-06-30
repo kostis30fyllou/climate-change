@@ -6,20 +6,33 @@ $base-heading-font-family: 'Roboto', sans-serif;
 $base-heading-font-weight: 500;
 
 // Colors
-$pallet-one: #00783e;
-$pallet-two: #47b881;
-$pallet-three: #d4eee2;
-$pallet-four: #f1faf5;
+$pallet-one: #114d66;
+$pallet-two: #6bc063;
+$pallet-three: #f1faf5;
 
 $global-emphasis-color: $pallet-one;
 $global-link-color: $pallet-two;
-$global-color: $pallet-four;
-$global-muted-color: $pallet-three;
-$global-muted-background: $pallet-four;
-$base-heading-color: $pallet-four;
+$global-link-hover-color: $global-emphasis-color;
+$global-muted-color: $pallet-two;
+$global-muted-background: $pallet-three;
+$global-inverse-color: $pallet-three;
+$inverse-global-color: $pallet-three;
 
-// Nav-bar
-$navbar-nav-item-color: $global-link-color;
-$navbar-nav-item-hover-color: $global-emphasis-color;
+$base-heading-color: $global-emphasis-color;
+$inverse-base-heading-color: $pallet-three;
+$inverse-base-link-color: $pallet-two;
+$inverse-base-link-hover-color: $pallet-two;
+$global-color: $pallet-three;
+
+  // Nav-bar
+$navbar-background: $pallet-one;
+$navbar-nav-item-color: $pallet-three;
+$navbar-nav-item-active-color: $pallet-two;
+$navbar-nav-item-hover-color: $pallet-two;
 $navbar-nav-item-font-size: $global-font-size;
 $navbar-nav-item-font-family: $base-heading-font-family;
+
+
+// Card and Shadows
+$global-medium-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+$card-default-background: $pallet-one;

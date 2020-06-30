@@ -6,7 +6,6 @@ section {
   left: 120px;
   height: calc(100vh - 80px);
   width: calc(100vw - 120px);
-  background: rgba(0, 0, 0, 0.60);
 }
 
 .menu {
@@ -15,8 +14,6 @@ section {
   left: 0;
   height: calc(100vh - 80px);
   width: 120px;
-  border-right: 1px solid $pallet-one;
-  background-color: $pallet-four;
   z-index: 1000;
 }
 
@@ -27,16 +24,12 @@ section {
   transform: translate(-50%, -50%);
 }
 
-.menu line {
-  stroke: $pallet-one;
-}
-
 .menu a.previous {
   position: absolute;
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: $pallet-one;
+  color: $pallet-three;
 }
 
 .menu a.next {
@@ -44,18 +37,22 @@ section {
   top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: $pallet-one;
+  color: $pallet-three;
 }
 
 .menu a.previous:hover, .menu a.next:hover {
-  background-color: $pallet-one;
+  background-color: $pallet-two;
   border-radius: 50%;
   display: flex;
   padding: 5px;
 }
 
+.menu a.previous path, .menu a.next path {
+  fill: $pallet-two;
+}
+
 .menu a.previous:hover path, .menu a.next:hover path {
-  fill: $pallet-four;
+  fill: $pallet-one;
 }
 
 .menu nav  {
@@ -72,10 +69,7 @@ section {
 }
 
 .menu nav > ul > li {
-  border-radius: 100%;
-  padding: 8px;
-  border: 1px solid $pallet-four;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .menu nav > ul > li > a {
@@ -83,17 +77,9 @@ section {
   border-radius: 100%;
   width: 15px;
   height: 15px;
-  background-color: $pallet-two;
-}
-
-.menu nav > ul > li.uk-active {
-  border: 1px solid $pallet-one;
-  transition: border-top-color 0.25s linear, border-right-color 0.25s linear 0.10s, border-bottom-color 0.25s linear 0.30s, border-left-color 0.25s linear 0.40s;
-  -webkit-animation : border-top-color 0.25s linear, border-right-color 0.25s linear 0.10s, border-bottom-color 0.25s linear 0.30s, border-left-color 0.25s linear 0.40s;
-  -moz-animation : border-top-color 0.25s linear, border-right-color 0.25s linear 0.10s, border-bottom-color 0.25s linear 0.30s, border-left-color 0.25s linear 0.40s;
-  -o-animation : border-top-color 0.25s linear, border-right-color 0.25s linear 0.10s, border-bottom-color 0.25s linear 0.30s, border-left-color 0.25s linear 0.40s;
+  background-color: $pallet-three;
 }
 
 .menu nav > ul > li.uk-active > a, .menu nav > ul > li > a:hover {
-  background-color: $pallet-one;
+  background-color: $pallet-two;
 }

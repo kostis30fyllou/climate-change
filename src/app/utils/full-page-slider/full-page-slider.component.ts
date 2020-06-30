@@ -31,7 +31,7 @@ import {SlideComponent} from "./slide.component";
         </svg>
       </a>
     </div>
-    <section (wheel)="onWheel($event)">
+    <section (wheel)="onWheel($event)" class="uk-animation-slide-bottom">
       <ng-content></ng-content>
     </section>`,
   styleUrls: ['full-page-slider.component.scss']
