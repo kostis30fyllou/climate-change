@@ -35,7 +35,7 @@ $navbar-nav-item-font-family: $base-heading-font-family;
 
 // Card and Shadows
 $global-medium-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-$card-default-background: rgba($pallet-three, 0.7);
+$card-default-background: $pallet-three;
 $card-default-color: $pallet-one;
 
 

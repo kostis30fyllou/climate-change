@@ -147,7 +147,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .style('stroke', 'black')
       .style('stroke-width', '.3px')
       .on('mouseover', function (d) {
-        d3.select(this).style('stroke-width', '2px');
+        d3.select(this).style('stroke-width', '1px');
       })
       .on('mouseout', function (d) {
         d3.selectAll('path').style('stroke-width', '.3px');
@@ -179,25 +179,25 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
 
     this.legend.append('rect')
       .attr('x', 10)
-      .attr('y', 300)
+      .attr('y', 270)
       .style('rx', '5')
       .attr('width', 200)
-      .attr('height', 280)
+      .attr('height', 310)
       .style('fill', '#f1faf5')
       .style('stroke', 'black')
-      .style('stroke-width', '.3px')
+      .style('stroke-width', '.5px')
 
     this.legend.append('text')
       .attr('x', 25)
-      .attr('y', 330)
+      .attr('y', 300)
       .style('fill', '#006064')
       .text('Av. Temperature')
       .style('font-size', '20px')
       .style('font-weight', 'bold');
 
+    let x = 50;
+    let y = 320;
     this.colors.forEach((color, i) => {
-      let x = 50;
-      let y = 350;
       this.legend.append('rect')
         .attr('x', x)
         .attr('y', y + i*20)
@@ -206,15 +206,33 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
         .attr('height', 15)
         .style('fill', color)
         .style('stroke', 'black')
-        .style('stroke-width', '.3px')
+        .style('stroke-width', '1px')
         .style('opacity', '0.5');
 
       this.legend.append('text')
-        .attr('x', 120 - this.domains[i].toString().length*5)
+        .attr('x', 145 - this.domains[i].toString().length*5)
         .attr('y', y + 13 + i*20)
         .text(this.domains[i])
         .style('fill', '#006064')
         .style('font-size', '14px');
     });
+
+    this.legend.append('rect')
+      .attr('x', x)
+      .attr('y', y + this.colors.length*20)
+      .style('rx', 1)
+      .attr('width', 20)
+      .attr('height', 15)
+      .style('fill', '#808080')
+      .style('stroke', 'black')
+      .style('stroke-width', '1px')
+      .style('opacity', '0.5');
+
+    this.legend.append('text')
+      .attr('x', 100)
+      .attr('y', y + 13 + this.colors.length*20)
+      .text('Not available')
+      .style('fill', '#006064')
+      .style('font-size', '14px');
   }
 }
