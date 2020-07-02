@@ -204,7 +204,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
         .attr('height', 15)
         .style('fill', color)
         .style('stroke', 'black')
-        .style('stroke-width', '1px');
+        .style('stroke-width', '0.3px');
 
       this.legend.append('text')
         .attr('x', 145 - this.domains[i].toString().length * 5)
@@ -222,7 +222,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .attr('height', 15)
       .style('fill', '#808080')
       .style('stroke', 'black')
-      .style('stroke-width', '1px')
+      .style('stroke-width', '.5px')
 
     this.legend.append('text')
       .attr('x', 100)
