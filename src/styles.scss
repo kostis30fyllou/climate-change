@@ -20,3 +20,17 @@ main {
 .uk-card {
   border-radius: 7px;
 }
+
+svg.map {
+  border-radius: 4px;
+}
+
+.uk-tooltip {
+  padding: 15px;
+  max-width: none;
+  box-shadow: $global-medium-box-shadow;
+}
+
+.uk-button {
+  border-radius: 5px;
+}

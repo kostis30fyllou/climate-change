@@ -46,7 +46,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/material.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -157,7 +158,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/material.scss"
             ],
             "scripts": []
           }

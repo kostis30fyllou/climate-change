@@ -1,0 +1,58 @@
+<div class="uk-section uk-text-justify">
+  <div class="uk-container uk-container-large uk-animation-fade">
+    <div class="uk-position-relative uk-visible-toggle uk-card uk-card-default" tabindex="-1"
+         uk-slideshow="draggable: false; min-height: 350;">
+      <ul class="uk-slideshow-items">
+        <li class="uk-grid uk-padding-large">
+          <div class="uk-width-1-5 uk-padding uk-text-center uk-padding-remove-top uk-padding-remove-right uk-visible@m">
+            <h2>
+              Average Temperature
+            </h2>
+            <h3>
+              Year: {{year | number}}
+            </h3>
+            <mat-form-field *ngIf="years" class="uk-margin-medium-bottom">
+              <mat-label>Choose a Year</mat-label>
+              <mat-select [(ngModel)]="inputYear" name="year" (ngModelChange)="yearChange($event)" (opened)="stopAutoPlay()">
+                <mat-option *ngFor="let current of years" [value]="current">
+                  {{current}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="uk-margin-medium-bottom">
+              -- OR --
+            </div>
+            <div class="uk-grid uk-grid-small uk-flex uk-flex-middle uk-text-nowrap" uk-grid>
+              <mat-form-field *ngIf="intervals" class="uk-width-1-2@m">
+                <mat-label>Interval(seconds)</mat-label>
+                <mat-select [(ngModel)]="interval" name="interval">
+                  <mat-option *ngFor="let current of intervals" [value]="current">
+                    {{current}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="uk-width-expand">
+                <button *ngIf="!autoPlaying" class="uk-button uk-button-primary uk-button-small" (click)="startAutoPlay()">Auto Play</button>
+                <button *ngIf="autoPlaying" class="uk-button uk-button-danger uk-button-small" (click)="stopAutoPlay()">Stop Play</button>
+              </div>
+            </div>
+          </div>
+          <div #mapParent class="uk-width-expand">
+            <div class="chart uk-position-relative" [style]="'height: ' + parentWidth*0.58 + 'px;'">
+              <app-map-chart [parentWidth]="parentWidth" [year]="year"></app-map-chart>
+            </div>
+          </div>
+        </li>
+        <li class="uk-grid">
+          <div class="uk-width-1-5@m uk-padding uk-flex uk-flex-center">
+            test
+          </div>
+        </li>
+      </ul>
+      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+         uk-slideshow-item="previous"></a>
+      <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+         uk-slideshow-item="next"></a>
+    </div>
+  </div>
+</div>

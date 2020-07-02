@@ -17,7 +17,8 @@ import {environment} from '../environments/environment';
           <ul class="uk-navbar-nav">
             <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
             <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/about">About Us</a></li>
-            <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/test2">test2</a></li>
+            <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/dashboard">Dashboard</a></li>
+            <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/video">Presentation</a></li>
           </ul>
         </div>
       </nav>

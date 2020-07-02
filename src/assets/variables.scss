@@ -6,8 +6,8 @@ $base-heading-font-family: 'Roboto', sans-serif;
 $base-heading-font-weight: 500;
 
 // Colors
-$pallet-one: #114d66;
-$pallet-two: #6bc063;
+$pallet-one: #006064;
+$pallet-two: #76ff03;
 $pallet-three: #f1faf5;
 
 $global-emphasis-color: $pallet-one;
@@ -22,7 +22,7 @@ $base-heading-color: $global-emphasis-color;
 $inverse-base-heading-color: $pallet-three;
 $inverse-base-link-color: $pallet-two;
 $inverse-base-link-hover-color: $pallet-two;
-$global-color: $pallet-three;
+$global-color: #212121;
 
   // Nav-bar
 $navbar-background: $pallet-one;
@@ -35,4 +35,13 @@ $navbar-nav-item-font-family: $base-heading-font-family;
 
 // Card and Shadows
 $global-medium-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-$card-default-background: $pallet-one;
+$card-default-background: rgba($pallet-three, 0.7);
+$card-default-color: $pallet-one;
+
+
+// Primary
+$global-primary-background: $pallet-one;
+$global-primary-color: $pallet-three;
+
+// Danger
+$button-danger-background: #d70300;
