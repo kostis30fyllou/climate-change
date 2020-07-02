@@ -10,15 +10,16 @@ import * as t from 'topojson';
 export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input()
-  year: number = 1743;
-  colors: any[] = ['#a50026', '#d73027', '#f46d43', '#fdae61', '#fee090', '#ffffbf', '#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695'].reverse();
+  year = 1743;
+  colors: any[] = ['#a50026', '#d73027', '#f46d43', '#fdae61', '#fee090', '#ffffbf',
+                  '#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695'].reverse();
   domains: number[] = [-40, -32, -24, -16, -8, 0, 8, 16, 24, 32, 40];
   data: any;
   countries: any;
   @Input()
   parentWidth = 1000;
-  width: number = 900;
-  height: number = 600;
+  width = 900;
+  height = 600;
   hostElement;
   svg;
   g;
@@ -34,13 +35,10 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit(): void {
     this.width = this.parentWidth;
     this.height = this.parentWidth * 0.6;
-    d3.json("/assets/temperatures.json").then(data => {
+    d3.json('/assets/temperatures.json').then(data => {
       this.data = data;
-      d3.json("/assets/countries.json").then(countries => {
+      d3.json('/assets/countries.json').then(countries => {
         this.countries = countries;
-        /*console.log(this.countries.objects.countries.geometries.filter(object => !this.data[object.properties.name]).map(object => object.properties.name).sort((one, two) => (one > two ? 1 : -1)));
-        let temp = this.countries.objects.countries.geometries.map(object => object.properties.name);
-        console.log(Object.entries(this.data).filter(([key, value]) => !temp.includes(key)));*/
         this.createMap();
       });
     });
@@ -80,15 +78,15 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setChartDimensions() {
-    let tooltip = this.tooltip;
+    const tooltip = this.tooltip;
     if (this.svg) {
       this.svg.attr('width', this.width).attr('height', this.height).on('click', function () {
         tooltip.style('display', 'none');
       });
       if (this.g) {
-        let projection = d3.geoMercator().translate([this.width / 2, this.height / 2])
+        const projection = d3.geoMercator().translate([this.width / 2, this.height / 2])
           .scale((this.width - 1) / 2 / Math.PI);
-        let path = d3.geoPath()
+        const path = d3.geoPath()
           .projection(projection);
         this.g.selectAll('path').attr('d', path);
       }
@@ -96,7 +94,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       this.svg = d3.select(this.hostElement).append('svg')
         .attr('width', this.width)
         .attr('height', this.height)
-        .on('click', function () {
+        .on('click', () => {
           tooltip.style('display', 'none');
         });
     }
@@ -118,7 +116,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private addGraphicsElement() {
-    this.g = this.svg.attr('class', 'map').append("g");
+    this.g = this.svg.attr('class', 'map').append('g');
     this.paths = this.g.selectAll('path')
       .data(t.feature(this.countries, this.countries.objects.countries).features)
       .enter()
@@ -127,19 +125,19 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private updateData() {
-    let data = this.data;
-    let year = this.year;
-    let projection = d3.geoMercator().translate([this.width / 2, this.height / 2])
+    const data = this.data;
+    const year = this.year;
+    const projection = d3.geoMercator().translate([this.width / 2, this.height / 2])
       .scale((this.width - 1) / 2 / Math.PI);
-    let path = d3.geoPath()
+    const path = d3.geoPath()
       .projection(projection);
-    let tooltip = this.tooltip;
+    const tooltip = this.tooltip;
     this.paths.attr('d', path)
       .style('fill', d => {
-        let data = this.data[d.properties.name];
-        if (data) {
-          if (data[this.year] && data[this.year].length > 0) {
-            return this.colorScale(d3.mean(data[this.year]));
+        const datum = this.data[d.properties.name];
+        if (datum) {
+          if (datum[this.year] && datum[this.year].length > 0) {
+            return this.colorScale(d3.mean(datum[this.year]));
           }
         }
         return '#808080';
@@ -149,7 +147,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .on('mouseover', function (d) {
         d3.select(this).style('stroke-width', '1px');
       })
-      .on('mouseout', function (d) {
+      .on('mouseout', () => {
         d3.selectAll('path').style('stroke-width', '.3px');
       })
       .on('click', function (d) {
@@ -195,23 +193,22 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .style('font-size', '20px')
       .style('font-weight', 'bold');
 
-    let x = 50;
-    let y = 320;
+    const x = 50;
+    const y = 320;
     this.colors.forEach((color, i) => {
       this.legend.append('rect')
         .attr('x', x)
-        .attr('y', y + i*20)
+        .attr('y', y + i * 20)
         .style('rx', 1)
         .attr('width', 20)
         .attr('height', 15)
         .style('fill', color)
         .style('stroke', 'black')
-        .style('stroke-width', '1px')
-        .style('opacity', '0.5');
+        .style('stroke-width', '1px');
 
       this.legend.append('text')
-        .attr('x', 145 - this.domains[i].toString().length*5)
-        .attr('y', y + 13 + i*20)
+        .attr('x', 145 - this.domains[i].toString().length * 5)
+        .attr('y', y + 13 + i * 20)
         .text(this.domains[i])
         .style('fill', '#006064')
         .style('font-size', '14px');
@@ -219,18 +216,17 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
 
     this.legend.append('rect')
       .attr('x', x)
-      .attr('y', y + this.colors.length*20)
+      .attr('y', y + this.colors.length * 20)
       .style('rx', 1)
       .attr('width', 20)
       .attr('height', 15)
       .style('fill', '#808080')
       .style('stroke', 'black')
       .style('stroke-width', '1px')
-      .style('opacity', '0.5');
 
     this.legend.append('text')
       .attr('x', 100)
-      .attr('y', y + 13 + this.colors.length*20)
+      .attr('y', y + 13 + this.colors.length * 20)
       .text('Not available')
       .style('fill', '#006064')
       .style('font-size', '14px');
