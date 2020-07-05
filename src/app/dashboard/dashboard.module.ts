@@ -6,6 +6,8 @@ import {MapChartModule} from "./map-chart/map-chart.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
+import {LineChartModule} from "./line-chart/line-chart.module";
+import {AreaChartModule} from "./area-chart/area-chart.module";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -20,7 +22,9 @@ const routes: Routes = [
     MapChartModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    LineChartModule,
+    AreaChartModule
   ],
 })
 export class DashboardModule { }

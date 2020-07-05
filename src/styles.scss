@@ -21,9 +21,8 @@ main {
   border-radius: 7px;
 }
 
-svg.map {
+svg.chart {
   border-radius: 4px;
-  background: #aadaff;
   border: .5px solid $pallet-one;
 }
 
@@ -31,8 +30,85 @@ svg.map {
   padding: 15px;
   max-width: none;
   box-shadow: $global-medium-box-shadow;
+  background-color: $pallet-three;
+  color: $pallet-one;
 }
 
 .uk-button {
   border-radius: 5px;
 }
+
+.line-path {
+  fill: none;
+  stroke: maroon;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+text {
+  font-family: OpenSans, sans-serif;
+  fill: $pallet-one;
+}
+
+
+svg.small {
+  font-size: 10px;
+  font-weight: 700;
+  text-shadow: 0 1px 1px $pallet-three;
+}
+
+text.country-title {
+  font-size: 20px;
+  fill: $pallet-one;
+}
+
+text.instructions {
+  font-size: 16px;
+  fill: $pallet-one;
+}
+
+g.context g.brush rect.selection {
+  stroke: $pallet-one;
+  stroke-width: 0.3px;
+}
+
+g.context g.axis path {
+  stroke-opacity: 0;
+}
+
+g.context g.axis line {
+  stroke-opacity: .1;
+}
+
+g.antarctica path.chart {
+  fill: rgba(127,201,127,0.5);
+}
+
+g.antarctic_peninsula path.chart {
+  fill: rgba(127,201,174,0.5);
+}
+
+g.east_antarctica path.chart {
+  fill: rgba(127,183,201,0.5);
+}
+
+g.west_antarctica path.chart {
+  fill: rgba(127,130,201,0.5);
+}
+
+g.usa path.chart {
+  fill: rgba(171,127,201,0.5);
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #aaa;
+  shape-rendering: crispEdges;
+}
+
+.brush .overlay {
+  fill: black;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+

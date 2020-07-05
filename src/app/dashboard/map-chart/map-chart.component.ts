@@ -35,9 +35,9 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit(): void {
     this.width = this.parentWidth;
     this.height = this.parentWidth * 0.6;
-    d3.json('/assets/temperatures.json').then(data => {
+    d3.json('/assets/dataset/temperatures.json').then(data => {
       this.data = data;
-      d3.json('/assets/countries.json').then(countries => {
+      d3.json('/assets/dataset/countries.json').then(countries => {
         this.countries = countries;
         this.createMap();
       });
@@ -54,6 +54,9 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       this.height = this.parentWidth * 0.6;
       this.setChartDimensions();
       this.setZoom();
+      if(this.legend) {
+        this.updateLegend();
+      }
     } else if (changes.year) {
       this.updateData();
     }
@@ -101,14 +104,16 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setZoom() {
-    const zoom = d3.zoom()
-      .scaleExtent([1, 8])
-      .translateExtent([[0, -(this.height / 3)], [this.width, 4 / 3 * this.height]])
-      .on('zoom', () => {
-        this.g.selectAll('path') // To prevent stroke width from scaling
-          .attr('transform', d3.event.transform);
-      });
-    this.svg.call(zoom);
+    if(typeof navigator !== "undefined") {
+      const zoom = d3.zoom()
+        .scaleExtent([1, 8])
+        .translateExtent([[0, -(this.height / 3)], [this.width, 4 / 3 * this.height]])
+        .on('zoom', () => {
+          this.g.selectAll('path') // To prevent stroke width from scaling
+            .attr('transform', d3.event.transform);
+        });
+      this.svg.call(zoom);
+    }
   }
 
   private setColorScale() {
@@ -116,7 +121,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private addGraphicsElement() {
-    this.g = this.svg.attr('class', 'map').append('g');
+    this.g = this.svg.attr('class', 'chart').style('background', '#aadaff').append('g');
     this.paths = this.g.selectAll('path')
       .data(t.feature(this.countries, this.countries.objects.countries).features)
       .enter()
@@ -148,14 +153,12 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
         d3.select(this).style('stroke-width', '1px');
       })
       .on('mouseout', () => {
-        d3.selectAll('path').style('stroke-width', '.3px');
+        this.g.selectAll('path').style('stroke-width', '.3px');
       })
       .on('click', function (d) {
         tooltip
           .style('left', d3.mouse(this)[0] + 'px')
           .style('top', d3.mouse(this)[1] + 'px')
-          .style('background', '#f1faf5')
-          .style('color', '#114d66')
           .style('display', 'inline-block')
           .html(() => {
             if (data[d.properties.name] && data[d.properties.name][year] && data[d.properties.name][year].length > 0) {
@@ -176,8 +179,9 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
     this.legend = this.svg.append('g');
 
     this.legend.append('rect')
+      .attr('id', 'legend')
       .attr('x', 10)
-      .attr('y', 270)
+      .attr('y', this.height - 350)
       .style('rx', '5')
       .attr('width', 200)
       .attr('height', 310)
@@ -186,17 +190,18 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .style('stroke-width', '.5px')
 
     this.legend.append('text')
-      .attr('x', 25)
-      .attr('y', 300)
-      .style('fill', '#006064')
+      .attr('id', 'title')
+      .attr('x', 35)
+      .attr('y', this.height - 320)
       .text('Av. Temperature')
       .style('font-size', '20px')
       .style('font-weight', 'bold');
 
     const x = 50;
-    const y = 320;
+    const y = this.height - 300;
     this.colors.forEach((color, i) => {
       this.legend.append('rect')
+        .attr('id', 'color-' + i)
         .attr('x', x)
         .attr('y', y + i * 20)
         .style('rx', 1)
@@ -207,14 +212,14 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
         .style('stroke-width', '1px');
 
       this.legend.append('text')
+        .attr('id', 'text-' + i)
         .attr('x', 145 - this.domains[i].toString().length * 5)
         .attr('y', y + 13 + i * 20)
-        .text(this.domains[i])
-        .style('fill', '#006064')
-        .style('font-size', '14px');
+        .text(this.domains[i]);
     });
 
     this.legend.append('rect')
+      .attr('id', 'color-unknown')
       .attr('x', x)
       .attr('y', y + this.colors.length * 20)
       .style('rx', 1)
@@ -222,13 +227,35 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
       .attr('height', 15)
       .style('fill', '#808080')
       .style('stroke', 'black')
-      .style('stroke-width', '1px')
+      .style('stroke-width', '1px');
 
     this.legend.append('text')
+      .attr('id', 'text-unknown')
       .attr('x', 100)
       .attr('y', y + 13 + this.colors.length * 20)
-      .text('Not available')
-      .style('fill', '#006064')
-      .style('font-size', '14px');
+      .text('Not available');
+  }
+
+  private updateLegend() {
+    this.legend.select('#legend')
+      .attr('y', this.height - 350);
+
+    this.legend.select('#title')
+      .attr('y', this.height - 320);
+
+    const y = this.height - 300;
+    this.colors.forEach((color, i) => {
+      this.legend.select('#color-' + i)
+        .attr('y', y + i * 20);
+
+      this.legend.select('#text-' + i)
+        .attr('y', y + 13 + i * 20)
+    });
+
+    this.legend.select('#color-unknown')
+      .attr('y', y + this.colors.length * 20);
+
+    this.legend.select('#text-unknown')
+      .attr('y', y + 13 + this.colors.length * 20)
   }
 }
