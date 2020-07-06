@@ -9,7 +9,7 @@ import {Chart} from "./chart";
 })
 export class AreaChartComponent implements OnInit, OnChanges {
 
-  data: any[];
+  data: any[] = [];
   continents: any[] = [];
   charts: Chart[];
   maxDataPoint = 0;
@@ -34,32 +34,34 @@ export class AreaChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    d3.csv('/assets/dataset/ice.csv').then(data => {
-      this.data = data;
-      /// Loop through first row and get each country and push it into an array to use later
-      for (let prop in data[0]) {
-        if (data[0].hasOwnProperty(prop)) {
-          if (prop != 'year') {
-            this.continents.push(prop);
-          }
-        }
-      }
-      data.forEach((d: any) => {
-        for (let prop in d) {
-          if (d.hasOwnProperty(prop)) {
-            d[prop] = parseFloat(d[prop]);
-            if (d[prop] > this.maxDataPoint) {
-              this.maxDataPoint = d[prop];
+    if(typeof fetch !== 'undefined') {
+      d3.csv('/assets/dataset/ice.csv').then(data => {
+        this.data = data;
+        /// Loop through first row and get each country and push it into an array to use later
+        for (let prop in data[0]) {
+          if (data[0].hasOwnProperty(prop)) {
+            if (prop != 'year') {
+              this.continents.push(prop);
             }
           }
         }
-        /// D3 needs a date object, let's convert it just one time
-        d.year = new Date(d.year, 0, 1);
-      });
-      if (this.parentWidth > 0) {
-        this.createChart();
-      }
-    })
+        data.forEach((d: any) => {
+          for (let prop in d) {
+            if (d.hasOwnProperty(prop)) {
+              d[prop] = parseFloat(d[prop]);
+              if (d[prop] > this.maxDataPoint) {
+                this.maxDataPoint = d[prop];
+              }
+            }
+          }
+          /// D3 needs a date object, let's convert it just one time
+          d.year = new Date(d.year, 0, 1);
+        });
+        if (this.parentWidth > 0) {
+          this.createChart();
+        }
+      })
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

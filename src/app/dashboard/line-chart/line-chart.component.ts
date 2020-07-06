@@ -7,7 +7,7 @@ import * as d3 from 'd3';
     <svg></svg>`,
 })
 export class LineChartComponent implements OnInit, OnChanges {
-  data: any[];
+  data: any[] = [];
   margin = {top: 60, right: 40, bottom: 90, left: 90};
   @Input()
   parentWidth = 960;
@@ -41,12 +41,14 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    d3.json("/assets/dataset/gmsl.json").then(data => {
-      this.data = data;
-      if (this.parentWidth > 0) {
-        this.createChart();
-      }
-    });
+    if(typeof fetch !== 'undefined') {
+      d3.json("/assets/dataset/gmsl.json").then(data => {
+        this.data = data;
+        if (this.parentWidth > 0) {
+          this.createChart();
+        }
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -14,7 +14,7 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   colors: any[] = ['#a50026', '#d73027', '#f46d43', '#fdae61', '#fee090', '#ffffbf',
                   '#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695'].reverse();
   domains: number[] = [-40, -32, -24, -16, -8, 0, 8, 16, 24, 32, 40];
-  data: any;
+  data: any[] = [];
   countries: any;
   @Input()
   parentWidth = 1000;
@@ -35,13 +35,15 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit(): void {
     this.width = this.parentWidth;
     this.height = this.parentWidth * 0.6;
-    d3.json('/assets/dataset/temperatures.json').then(data => {
-      this.data = data;
-      d3.json('/assets/dataset/countries.json').then(countries => {
-        this.countries = countries;
-        this.createMap();
+    if(typeof fetch !== 'undefined') {
+      d3.json('/assets/dataset/temperatures.json').then(data => {
+        this.data = data;
+        d3.json('/assets/dataset/countries.json').then(countries => {
+          this.countries = countries;
+          this.createMap();
+        });
       });
-    });
+    }
   }
 
   ngAfterViewInit(): void {
