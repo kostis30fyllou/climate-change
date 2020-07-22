@@ -160,7 +160,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       .attr("class","instructions")
       .attr("x", this.contextWidth / 2)
       .attr("text-anchor", "middle")
-      .text('Click and drag above to zoom / pan the data');
+      .text('Click and drag below to zoom / pan the data');
   }
 
   private showOnly(b) {
