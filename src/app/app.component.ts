@@ -10,7 +10,7 @@ import {environment} from '../environments/environment';
       <nav class="uk-navbar-container uk-position-relative uk-text-bold" uk-navbar style="z-index: 980; width: 100vw;">
         <div class="uk-navbar-left uk-margin-left">
           <a class="uk-navbar-item uk-logo" routerLink="/">
-            <img width="50" src="/assets/logo.png">
+            <img width="50" src="assets/logo.png">
           </a>
         </div>
         <div class="uk-navbar-right uk-margin-large-right">

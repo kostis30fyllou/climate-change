@@ -36,9 +36,9 @@ export class MapChartComponent implements OnInit, OnChanges, AfterViewInit {
     this.width = this.parentWidth;
     this.height = this.parentWidth * 0.6;
     if(typeof fetch !== 'undefined') {
-      d3.json('/assets/dataset/temperatures.json').then(data => {
+      d3.json('assets/dataset/temperatures.json').then(data => {
         this.data = data;
-        d3.json('/assets/dataset/countries.json').then(countries => {
+        d3.json('assets/dataset/countries.json').then(countries => {
           this.countries = countries;
           this.createMap();
         });

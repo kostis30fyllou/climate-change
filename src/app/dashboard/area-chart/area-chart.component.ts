@@ -35,7 +35,7 @@ export class AreaChartComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     if(typeof fetch !== 'undefined') {
-      d3.csv('/assets/dataset/ice.csv').then(data => {
+      d3.csv('assets/dataset/ice.csv').then(data => {
         this.data = data;
         /// Loop through first row and get each country and push it into an array to use later
         for (let prop in data[0]) {

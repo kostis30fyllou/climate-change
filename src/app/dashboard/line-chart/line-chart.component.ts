@@ -42,7 +42,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     if(typeof fetch !== 'undefined') {
-      d3.json("/assets/dataset/gmsl.json").then(data => {
+      d3.json("assets/dataset/gmsl.json").then(data => {
         this.data = data;
         if (this.parentWidth > 0) {
           this.createChart();
