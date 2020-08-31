@@ -1,0 +1,47 @@
+// Your custom variables and variable overwrites.
+// Fonts
+$global-font-family: 'Open Sans', sans-serif;
+$global-font-size: 16px;
+$base-heading-font-family: 'Roboto', sans-serif;
+$base-heading-font-weight: 500;
+
+// Colors
+$pallet-one: #006064;
+$pallet-two: #76ff03;
+$pallet-three: #f1faf5;
+
+$global-emphasis-color: $pallet-one;
+$global-link-color: $pallet-two;
+$global-link-hover-color: $global-emphasis-color;
+$global-muted-color: $pallet-two;
+$global-muted-background: $pallet-three;
+$global-inverse-color: $pallet-three;
+$inverse-global-color: $pallet-three;
+
+$base-heading-color: $global-emphasis-color;
+$inverse-base-heading-color: $pallet-three;
+$inverse-base-link-color: $pallet-two;
+$inverse-base-link-hover-color: $pallet-two;
+$global-color: #212121;
+
+  // Nav-bar
+$navbar-background: $pallet-one;
+$navbar-nav-item-color: $pallet-three;
+$navbar-nav-item-active-color: $pallet-two;
+$navbar-nav-item-hover-color: $pallet-two;
+$navbar-nav-item-font-size: $global-font-size;
+$navbar-nav-item-font-family: $base-heading-font-family;
+
+
+// Card and Shadows
+$global-medium-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+$card-default-background: $pallet-three;
+$card-default-color: $pallet-one;
+
+
+// Primary
+$global-primary-background: $pallet-one;
+$global-primary-color: $pallet-three;
+
+// Danger
+$button-danger-background: #d70300;
