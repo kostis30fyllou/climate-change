@@ -17,6 +17,7 @@
       "architect": {
         "build": {
           "builder": "udk:udk-builder",
+          "baseHref": "https://kostis30fyllou.github.io/climate-change",
           "options": {
             "browserTarget": "app:browser",
             "serverTarget": "app:server"
@@ -35,7 +36,7 @@
         "browser": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app/browser",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
