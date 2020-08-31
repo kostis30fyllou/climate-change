@@ -35,7 +35,6 @@
         "browser": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "https://kostis30fyllou.github.io/climate-change/",
             "outputPath": "docs/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
