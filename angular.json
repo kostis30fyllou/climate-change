@@ -36,7 +36,7 @@
         "browser": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs/",
+            "outputPath": "docs/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -90,7 +90,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/app/server",
+            "outputPath": "docs/server",
             "main": "src/server.ts",
             "bundleDependencies": false,
             "tsConfig": "tsconfig.server.json",
